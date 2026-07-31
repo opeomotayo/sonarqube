@@ -1,0 +1,26 @@
+service:
+  name: sonarqube
+  identifier: sonarqube
+  orgIdentifier: default
+  projectIdentifier: default_project
+  serviceDefinition:
+    spec:
+      manifests:
+        - manifest:
+            identifier: sonarqube
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: GitHub_Connector
+                  gitFetchType: Branch
+                  paths:
+                    - namespace.yaml
+                    - postgres.yaml
+                    - sonarqube.yaml
+                  repoName: sonarqube
+                  branch: main
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+    type: Kubernetes

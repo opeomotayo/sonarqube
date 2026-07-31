@@ -5,7 +5,7 @@ inputSet:
   orgIdentifier: default
   projectIdentifier: default_project
   pipeline:
-    identifier: python_hello_world
+    identifier: sonarqube
     properties:
       ci:
         codebase:
@@ -25,9 +25,9 @@ inputSet:
                   spec:
                     artifacts:
                       primary:
-                        primaryArtifactRef: python_hello_world
+                        primaryArtifactRef: sonarqube
                         sources:
-                          - identifier: python_hello_world
+                          - identifier: sonarqube
                             type: DockerRegistry
                             spec:
                               tag: <+trigger.commitShortSha>
@@ -42,9 +42,9 @@ inputSet:
                   spec:
                     artifacts:
                       primary:
-                        primaryArtifactRef: python_hello_world
+                        primaryArtifactRef: sonarqube
                         sources:
-                          - identifier: python_hello_world
+                          - identifier: sonarqube
                             type: DockerRegistry
                             spec:
                               tag: <+trigger.commitShortSha>

@@ -1,6 +1,6 @@
 pipeline:
-  name: python_hello_world
-  identifier: python_hello_world
+  name: sonarqube
+  identifier: sonarqube
   projectIdentifier: default_project
   orgIdentifier: default
   tags: {}
@@ -8,7 +8,7 @@ pipeline:
     ci:
       codebase:
         connectorRef: GitHub_Connector
-        repoName: python-hello-world
+        repoName: sonarqube
         build: <+input>
   stages:
     - stage:
@@ -71,7 +71,7 @@ pipeline:
                   identifier: build_and_push_to_dockerhub
                   spec:
                     connectorRef: Docker_Hub_Connector
-                    repo: opeomotayo/python-hello-world
+                    repo: opeomotayo/sonarqube
                     tags:
                       - <+pipeline.sequenceId>
     - stage:
@@ -82,7 +82,7 @@ pipeline:
         spec:
           deploymentType: Kubernetes
           service:
-            serviceRef: python_hello_world_preprod
+            serviceRef: sonarqube_preprod
             serviceInputs:
               serviceDefinition:
                 type: Kubernetes
@@ -155,7 +155,7 @@ pipeline:
         spec:
           deploymentType: Kubernetes
           service:
-            serviceRef: python_hello_world_prod
+            serviceRef: sonarqube_prod
             serviceInputs:
               serviceDefinition:
                 type: Kubernetes
